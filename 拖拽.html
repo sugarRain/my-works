@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" id="aa">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#container{
+			width: 400px;
+			height: 300px;
+			border: 1px solid gray;
+			position: absolute;
+			margin-left: 200px;
+		}
+		#title{
+			height: 30px;
+			background: #ccc;
+			cursor: move;
+		}
+		#close{
+			float: right;
+		}
+	</style>
+</head>
+<body>
+	<div id="container">
+		<div id="title">
+			我是标题
+			<span id="close">[x]</span>
+		</div>
+		<div id="content">
+			12367890
+		</div>
+	</div>
+	<script>
+		var oContainer = document.getElementById('container');
+		var oTitle = document.getElementById('title');
+		oTitle.onmousedown = function(e){
+			e = e || window.event;
+			var iDisX = iDisY = 0;
+			iDisX = e.clientX - oContainer.offsetLeft;
+			iDisY = e.clientY - oContainer.offsetTop;
+			document.onmousemove = function(e){
+				e = e || window.event;
+				var iLeft = e.clientX - iDisX;
+				var iTop = e.clientY - iDisY;
+
+				if(iLeft < 50){
+					iLeft = 0;
+				}
+				if(iTop > document.documentElement.clientHeight - oContainer.offsetHeight){
+					iTop = document.documentElement.clientHeight - oContainer.offsetHeight;
+				}
+				if(iLeft > document.documentElement.clientWidth - oContainer.offsetWidth){
+					iLeft = document.documentElement.clientWidth - oContainer.offsetWidth;
+				}
+				if(iTop < 0){
+					iTop = 0;
+				}
+
+				oContainer.style.left = iLeft + 'px';
+				oContainer.style.top = iTop + 'px';
+				console.log(oContainer.style.left);
+			};
+			document.onmouseup = function(){
+				document.onmousemove = null;
+			};
+		};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<input type="checkbox" name="hobby">篮球
+	<input type="checkbox" name="hobby">足球
+	<input type="checkbox" name="hobby">羽毛球
+	<input type="checkbox" name="hobby">乒乓球
+	<br/>
+	<input type="button" value="全选" id="checkall"> 
+	<input type="button" value="全不选" id="checknone">
+	<input type="button" value="反选" id="checkreserve">
+
+<script src="jquery-1.10.2.min.js"></script>
+
+<script>
+	$(function(){
+
+		$("#checkall").on('click',function(){
+			$('[type=checkbox]').prop('checked',true);
+		});
+
+		$("#checknone").on('click',function(){
+			$('[type=checkbox]').prop('checked',false);
+		});
+
+
+		$("#checkreserve").on('click',function(){
+			$('[type=checkbox]').each(function(index,element){
+				this.checked = !this.checked;
+			});
+
+		});
+
+
+
+
+
+
+	});
+</script>
+
+
+</body>
+</html>
